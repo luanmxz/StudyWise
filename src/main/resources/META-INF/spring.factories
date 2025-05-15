@@ -1,2 +1,2 @@
 org.springframework.boot.env.EnvironmentPostProcessor=\
-com.dev.luan.learn.infrastructure.DotenvEnvironmentPostProcessor
+com.dev.luan.studywise.infrastructure.DotenvEnvironmentPostProcessor
