@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.dev.luan</groupId>
 	<artifactId>StudyWise</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>learn</name>
+	<name>StudyWise</name>
 	<description>StudyWise</description>
+
 	<url />
 	<licenses>
 		<license />
 	</licenses>
 	<developers>
-		<developer />
+		<developer>
+			<name>Luan Marcene</name>
+			<email>dev.luanmarcene@gmail.com</email>
+		</developer>
 	</developers>
 	<scm>
 		<connection />
@@ -27,65 +33,189 @@
 		<tag />
 		<url />
 	</scm>
+
 	<properties>
 		<java.version>21</java.version>
 	</properties>
+
 	<dependencies>
+		<!-- 
+		O que faz: Adiciona endpoints prontos para monitoramento e gerenciamento da aplicação em produção,
+		como /actuator/health, /actuator/metrics, entre outros.
+		Por que usar: Facilita acompanhar a saúde, métricas, e detalhes de configuração da aplicação sem
+		implementar tudo manualmente.
+		Exemplo de uso: Consultar o estado de saúde via GET /actuator/health.
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
+		<!-- 
+		O que faz: Integra Spring Data JPA com Hibernate, fornecendo abstrações para CRUD e consultas em
+		bancos relacionais usando repositories e entidades Java anotadas.
+		Por que usar: Simplifica operações de persistência, evita boilerplate de DAOs e transações.
+		Exemplo de uso: Definir uma interface interface UsuarioRepository extends JpaRepository<Usuario,
+		Long> {} e usar usuarioRepository.findAll().
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!--
+		O que faz: Incorpora o Spring Security, framework robusto de autenticação e autorização.
+		Por que usar: Protege endpoints, configura filtros de segurança, suporta login form, Basic Auth,
+		OAuth2, entre outros.Exemplo de uso: Criar uma classe WebSecurityConfigurerAdapter para definir
+		regras de acesso.
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
+		<!-- 
+		O que faz: Configura Spring MVC, suporte a REST, e inclui Tomcat embarcado como servidor HTTP
+		padrão.
+		Por que usar: Permite criar rapidamente APIs RESTful ou aplicações web completas sem configuração
+		explícita do container.
+		Exemplo de uso: Anotar controladores com @RestController e mapear rotas com @GetMapping.
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- 
+		O que faz: Habilita hot reload e outras facilidades em tempo de desenvolvimento, como
+		reinicialização automática ao alterar código.
+		Por que usar: Acelera o ciclo de desenvolvimento, dispensando reinicializações manuais.
+		Exemplo de uso: Alterar um controller e ver a mudança refletida imediatamente no navegador.
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+
+		<!-- 
+		O que faz: Driver JDBC Type 4 para conectar a aplicações Java a bancos PostgreSQL usando o
+		protocolo nativo.
+		Por que usar: Torna a aplicação independente de plataforma e compatível com o pool de conexões do
+		Spring Boot.
+		Exemplo de uso: Configurar spring.datasource.url=jdbc:postgresql://host:porta/db
+		-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+
+		<!-- 
+		Um starter que agrega todas as bibliotecas essenciais para testes de aplicações Spring Boot
+		(unitários e de integração).
+		Centraliza tudo que você precisa para testes em um único starter, evitando declarar várias
+		dependências manualmente.
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- 
+		Fornece utilitários específicos para testar cenários de segurança com Spring Security, como
+		simulações de autenticação, autorização e integração com o MockMvc.
+		Permite escrever testes de integração e unitários que envolvem fluxos de segurança sem precisar
+		realmente autenticar um usuário real ou subir um servidor de autorização externo.
+		-->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- 
+		O que faz: Biblioteca para converter objetos Java em JSON e vice‑versa, com APIs toJson() e
+		fromJson().
+		Por que usar: Oferece flexibilidade na serialização personalizada e baixa sobrecarga para casos
+		simples.
+		-->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.13.1</version>
 		</dependency>
+
+		<!-- 
+		O que faz: Carrega automaticamente variáveis de um arquivo .env para System.getenv() e
+		System.getProperty().
+		Por que usar: Mantém configurações sensíveis (chaves, senhas) fora do código-fonte, alinhando-se a
+		best practices de 12‑factor apps.
+		-->
 		<dependency>
 			<groupId>io.github.cdimascio</groupId>
 			<artifactId>dotenv-java</artifactId>
 			<version>2.2.0</version>
 		</dependency>
+
+		<!-- 
+		O que faz: Prepara a aplicação para atuar como Resource Server que consome tokens OAuth2 (JWT ou
+		opaque) para autorizar requisições.
+		Por que usar: Desacopla autenticação de autorização, permitindo que um Authorization Server
+		dedicado emita tokens.
+		Exemplo de uso:
+		```application.yaml
+		yaml
+		Copiar
+		Editar
+		spring:
+		security:
+			oauth2:
+			resourceserver:
+				jwt:
+				issuer-uri: https://meu-issuer
+		```
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+
+		<!-- 
+		O que faz: Suporte ao framework JOSE (JWT, JWS, JWE, JWK) para assinatura e criptografia de tokens.
+		Por que usar: Necessário quando o Resource Server ou o Authorization Server precisam
+		criar/verificar tokens JWT assinados/encriptados.
+		Exemplo de uso:
+		NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder.withJwkSetUri(jwkSetUri).build();
+		-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+			<version>6.4.5</version>
+		</dependency>
 	</dependencies>
 
+	<!-- 
+	O bloco de <build><plugins> com o Spring Boot Maven Plugin serve para integrar tarefas específicas
+	do Spring Boot diretamente no ciclo de vida do Maven, sem necessidade de scripts manuais. Com
+	ele você:
+	1. Empacota sua aplicação como JAR ou WAR executável (incluindo todas as dependências).
+	2. Executa a aplicação via Maven (mvn spring-boot:run) sem precisar chamar o java -jar manualmente.
+	3. Gera informações de build (build-info) úteis para o Actuator.
+	4. Inicia e para automaticamente a aplicação em cenários de testes de integração.
+
+	Por que usar:
+	1. Simplicidade: Dispensa configurações externas e scripts adicionais para empacotar e rodar a
+	aplicação.
+	2. Padronização: Garante que todos no time usem o mesmo processo de build e execução.
+	3. Automação em CI/CD: Facilita pipelines que só precisam chamar mvn package e já saem com artefato
+	executável.
+	4. Integração com Actuator: Ao gerar build-info, você adiciona informações valiosas para
+	monitoramento e auditoria.
+	-->
 	<build>
 		<plugins>
 			<plugin>
