@@ -1,4 +1,4 @@
-package com.dev.luan.learn.infrastructure;
+package com.dev.luan.studywise.infrastructure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

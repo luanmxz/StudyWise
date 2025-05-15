@@ -1,4 +1,4 @@
-package com.dev.luan.learn.dto.create_tip.response;
+package com.dev.luan.studywise.dto.create_tip.response;
 
 public class ChoicesResponse {
     private Integer index;

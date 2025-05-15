@@ -1,0 +1,22 @@
+Gere uma única dica (“tip”) a respeito desse assunto: %s, incluindo:
+1. Título (Afirmação clara sobre algum conceito)
+2. Descrição (Breve contexto explicativo sobre o título)
+3. Perguntas (No mínimo DUAS e no máximo TRÊS perguntas sobre os pontos 1 e 2)
+   3.1. Cada pergunta deve possuir no mínimo 2 opções de resposta.
+   3.2. Cada pergunta deve possuir no máximo 3 opções de resposta.
+O nível de conhecimento necessário para esta TIP deve ser: %s, considerando a seguinte divisão (fácil (junior), médio(pleno), dificil (pleno experiente), muito dificil (senior))
+
+*Importante: O output deve ser um JSON nesse formato:
+{
+  "affirmation": "...",
+  "description": "...",
+  "questions": [
+    {
+      "title": "Pergunta 1. ...?",
+      "options": [
+        { "title": "...", "isCorrect": true },
+        { "title": "...", "isCorrect": false }
+      ]
+    }
+  ]
+}

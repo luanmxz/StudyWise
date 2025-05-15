@@ -1,4 +1,4 @@
-package com.dev.luan.learn.dto.create_tag;
+package com.dev.luan.studywise.dto.create_tag;
 
 public record Content(String type, String text) {
 }

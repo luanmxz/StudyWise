@@ -1,4 +1,4 @@
-package com.dev.luan.learn.infrastructure;
+package com.dev.luan.studywise.infrastructure;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,11 @@
-package com.dev.luan.learn;
+package com.dev.luan.studywise;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -27,7 +34,10 @@ public class AppEnvironment {
         return env.getProperty("MAX_TOKENS_TO_GENERATE_TEXT");
     }
 
-    public String getPromptToCreateTip() {
-        return env.getProperty("PROMPT_TO_CREATE_TIP");
+    public String getPromptToCreateTip() throws IOException {
+        String pathStr = env.getProperty("PROMPT_TO_CREATE_TIP");
+        Path path = Path.of(pathStr);
+
+        return Files.readString(path, StandardCharsets.UTF_8);
     }
 }
