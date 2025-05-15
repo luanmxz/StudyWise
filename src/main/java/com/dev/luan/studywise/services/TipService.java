@@ -21,7 +21,6 @@ import com.dev.luan.studywise.dto.create_tag.Messages;
 import com.dev.luan.studywise.dto.create_tip.response.CreateTipResponse;
 import com.dev.luan.studywise.model.Tip;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 @Service
 public class TipService {
