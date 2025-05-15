@@ -1,18 +1,6 @@
 spring:
   application:
     name: StudyWise
-  datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password: 123
-    driverClassName: org.h2.Driver
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-
 
 huggingface:
   api:
