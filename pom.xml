@@ -109,7 +109,6 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 
 
@@ -196,6 +195,30 @@
 			<artifactId>spring-security-oauth2-jose</artifactId>
 			<version>6.4.5</version>
 		</dependency>
+
+		<!-- 
+		O que faz: Disponibiliza recursos para usar a REST API do console de ADMIN do Keycloak
+		-->
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-admin-client</artifactId>
+			<version>26.0.5</version>
+		</dependency>
+		<!-- 
+		O que faz: Facilita a conversão entre models-dto-entities usando anotações, evitando boilerplate.
+		Por que usar: Reduz o código repetitivo de conversão entre diferentes representações de dados.
+		-->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.6.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>8.31.1</version>
+		</dependency>
 	</dependencies>
 
 	<!-- 
@@ -218,6 +241,24 @@
 	-->
 	<build>
 		<plugins>
+			<!-- Plugin do Compilador Maven (ESSENCIAL PARA MAPSTRUCT) -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>21</source>
+					<target>21</target>
+					<annotationProcessorPaths>
+						<!-- MapStruct -->
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>1.6.3</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

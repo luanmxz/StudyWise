@@ -5,8 +5,32 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://localhost:8081/realms/myrealm
+          issuer-uri: ${KEYCLOAK_ISS}
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
 
+keycloak:
+  resource: ${KEYCLOAK_CLIENT_ID}
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+    type:
+      descriptor:
+        sql:
+          BasicBinder: TRACE
+        
 huggingface:
   api:
     url: ${HUGGINGFACE_API_URL}
@@ -14,3 +38,8 @@ huggingface:
 generativeia:
   model: ${GENERATIVE_IA_MODEL}
   max-tokens: ${MAX_TOKENS_TO_GENERATE_TEXT}
+
+twilio:
+  account-sid: ${TWILIO_ACCOUNT_SID}
+  auth-token: ${TWILIO_AUTH_TOKEN}
+  phone-number: ${TWILIO_PHONE_NUMBER}
