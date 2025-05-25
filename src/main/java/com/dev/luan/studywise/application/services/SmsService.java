@@ -19,21 +19,16 @@ public class SmsService {
     @Value("${twilio.phone-number}")
     private static String twilioPhoneNumber;
 
-    /** Account SID em variável de ambiente */
-    private static final String ACCOUNT_SID = twilioAccountSid;
-    /** Auth Token em variável de ambiente */
-    private static final String AUTH_TOKEN = twilioAuthToken;
-    static {
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-    }
-
     /**
      * Busca a última mensagem SMS recebida no número Twilio configurado.
      * 
      * @param fromNumber número do remetente (opcional, pode filtrar)
      * @return corpo da última mensagem ou null se não houver
      */
-    public String getLastSms(String fromNumber) {
+    public static String getLastSms(String fromNumber) {
+
+        Twilio.init(twilioAccountSid, twilioAuthToken);
+
         // 1) Leitura retorna ResourceSet<Message>
         ResourceSet<Message> messages = Message.reader()
                 .setTo(new com.twilio.type.PhoneNumber(twilioPhoneNumber))

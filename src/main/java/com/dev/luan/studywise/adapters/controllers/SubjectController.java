@@ -28,9 +28,10 @@ public class SubjectController {
     @PostMapping("/create")
     @PreAuthorize("hasAuthority('subjects:create') || hasRole('ADMIN')")
     public ResponseEntity<CreateSubjectResponse> create(@AuthenticationPrincipal Jwt jwt,
-            @RequestBody @Valid CreateSubjectRequest createSubjectRequest) {
+            @Valid @RequestBody CreateSubjectRequest createSubjectRequest) {
 
-        CreateSubjectResponse createSubjectResponse = subjectService.createSubject(createSubjectRequest);
+        CreateSubjectResponse createSubjectResponse = subjectService.createSubject(createSubjectRequest,
+                jwt.getSubject());
 
         return ResponseEntity.status(201).body(createSubjectResponse);
     }
